@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sogya.projects.R
 import com.sogya.projects.models.Building
 
-class ListAdapter(list: ArrayList<Building>, onBuildingClickListenner: (Building, Int) -> Unit) :
+class ListAdapter(
+    private val onBuildingClickListener: OnBuildingClickListener
+) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
-    private var buildings: ArrayList<Building> = list
+    private var buildings = ArrayList<Building>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
@@ -21,11 +23,18 @@ class ListAdapter(list: ArrayList<Building>, onBuildingClickListenner: (Building
         return ViewHolder(view)
     }
 
+    interface OnBuildingClickListener {
+        fun onClick(building: Building)
+    }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val building: Building = buildings[position]
         holder.labelTextView.text = building.label
-        holder.imageViewBuilding.setImageResource(building.imageId)
+        holder.imageViewBuilding.setImageResource(building.buildingEnumState.imageResource)
+        holder.itemView.setOnClickListener {
+            onBuildingClickListener.onClick(building)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -36,5 +45,12 @@ class ListAdapter(list: ArrayList<Building>, onBuildingClickListenner: (Building
         val labelTextView: TextView = itemView.findViewById(R.id.textViewLabel)
         val imageViewBuilding: ImageView = itemView.findViewById(R.id.imageViewBuilding)
 
+    }
+
+    fun updateBuildingList(buildingArrayList: ArrayList<Building>) {
+        this.buildings.clear()
+        notifyItemChanged(1)
+        this.buildings.addAll(buildingArrayList)
+        notifyItemRangeChanged(0, buildings.size)
     }
 }
