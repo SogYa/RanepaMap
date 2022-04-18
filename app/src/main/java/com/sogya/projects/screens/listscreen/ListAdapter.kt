@@ -19,7 +19,7 @@ class ListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.buildng_item, parent, false)
+                .inflate(R.layout.building_item, parent, false)
         return ViewHolder(view)
     }
 
