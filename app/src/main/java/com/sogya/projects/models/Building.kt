@@ -1,7 +1,8 @@
 package com.sogya.projects.models
 
+import com.sogya.projects.instruments.BuildingsEnum
+
 data class Building(
-    val buildingID: Int,
-    val label: String,
-    val imageId: Int
+    val buildingEnumState: BuildingsEnum,
+    val label: String
 )
