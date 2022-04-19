@@ -1,8 +1,14 @@
 package com.sogya.projects.models
 
-import com.sogya.projects.instruments.BuildingsEnum
+import com.sogya.projects.instruments.BuildingsFloorsEnums
+import java.io.Serializable
+
 
 data class Building(
-    val buildingEnumState: BuildingsEnum,
-    val label: String
-)
+    val resourceId: Int,
+    val label: String,
+    val floorNumber: Int,
+    val buildingsFloorsEnums: BuildingsFloorsEnums
+
+
+) : Serializable
