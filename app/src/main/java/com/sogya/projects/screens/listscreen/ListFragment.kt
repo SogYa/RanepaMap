@@ -11,9 +11,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentListBinding
-import com.sogya.projects.instruments.BuildingsEnum
+import com.sogya.projects.instruments.BuildingsFloorsEnums
 import com.sogya.projects.instruments.OnDataPass
 import com.sogya.projects.models.Building
+import java.io.Serializable
 
 
 class ListFragment : Fragment(R.layout.fragment_list), ListAdapter.OnBuildingClickListener {
@@ -38,11 +39,46 @@ class ListFragment : Fragment(R.layout.fragment_list), ListAdapter.OnBuildingCli
         adapter = ListAdapter(this)
         binding.buildingsRecyclerView.adapter = adapter
         if (buildingsList.isEmpty()) {
-            buildingsList.add(Building(BuildingsEnum.FIRST, "Первый корпус"))
-            buildingsList.add(Building(BuildingsEnum.SECOND, "Второй корпус"))
-            buildingsList.add(Building(BuildingsEnum.THIRD, "Третий корпус"))
-            buildingsList.add(Building(BuildingsEnum.FIVE, "Пятый корпус"))
-            buildingsList.add(Building(BuildingsEnum.SIX, "Шестой корпус"))
+            buildingsList.add(
+                Building(
+                    R.drawable.building1,
+                    "Первый корпус",
+                    3,
+                    BuildingsFloorsEnums.FIRST
+                )
+            )
+            buildingsList.add(
+                Building(
+                    R.drawable.korpus2,
+                    "Второй корпус",
+                    2,
+                    BuildingsFloorsEnums.SECOND
+                )
+            )
+            buildingsList.add(
+                Building(
+                    R.drawable.korpus3,
+                    "Третий корпус",
+                    4,
+                    BuildingsFloorsEnums.THIRD
+                )
+            )
+            buildingsList.add(
+                Building(
+                    R.drawable.korpus5,
+                    "Пятый корпус",
+                    6,
+                    BuildingsFloorsEnums.FIVE
+                )
+            )
+            buildingsList.add(
+                Building(
+                    R.drawable.korpus6,
+                    "Шестой корпус",
+                    3,
+                    BuildingsFloorsEnums.SIX
+                )
+            )
         }
     }
 
@@ -58,9 +94,11 @@ class ListFragment : Fragment(R.layout.fragment_list), ListAdapter.OnBuildingCli
     }
 
     override fun onClick(building: Building) {
+
         findNavController().navigate(
-            R.id.action_listFragment_to_mapFragment,
-            bundleOf("building" to building.label)
+            R.id.action_listFragment_to_mapFragment, bundleOf("building" to building)
         )
+
     }
+
 }
