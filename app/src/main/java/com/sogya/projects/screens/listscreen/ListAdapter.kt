@@ -31,7 +31,7 @@ class ListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val building: Building = buildings[position]
         holder.labelTextView.text = building.label
-        holder.imageViewBuilding.setImageResource(building.buildingEnumState.imageResource)
+        holder.imageViewBuilding.setImageResource(building.resourceId)
         holder.itemView.setOnClickListener {
             onBuildingClickListener.onClick(building)
         }
@@ -53,4 +53,5 @@ class ListAdapter(
         this.buildings.addAll(buildingArrayList)
         notifyItemRangeChanged(0, buildings.size)
     }
+
 }
