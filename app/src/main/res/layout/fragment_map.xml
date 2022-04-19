@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,20 +30,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:background="#00FFFFFF"
+            android:foreground="@drawable/ic_baseline_keyboard_arrow_left_24"
+            android:foregroundGravity="center"
+            android:foregroundTint="@color/ranepa_red"
+            app:icon="@drawable/ic_baseline_keyboard_arrow_left_24"
+            app:iconGravity="start"
+            app:iconSize="50dp"
+            app:iconTint="@color/ranepa_red"
+            app:rippleColor="#00FFFFFF" />
 
         <TextView
             android:id="@+id/textViewFloorNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:textAlignment="center" />
+            android:fontFamily="@font/als_hauss_regular"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/buttonUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:background="#00FFFFFF"
+            android:foreground="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:foregroundGravity="center"
+            android:foregroundTint="@color/ranepa_red"
+            app:icon="@drawable/ic_baseline_keyboard_arrow_right_24"
+            app:iconGravity="end"
+            app:iconSize="50dp"
+            app:iconTint="@color/ranepa_red"
+            app:rippleColor="#00FFFFFF" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
