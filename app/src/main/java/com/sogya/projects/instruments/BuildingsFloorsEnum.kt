@@ -11,11 +11,14 @@ enum class BuildingsFloorsEnums(
     val sixFloorResource: Int? = null
 ) {
     FIRST(
-        R.drawable.first_floor_six_building,
-        R.drawable.second_floor_six_building,
-        R.drawable.third_floor_six_building
+        R.drawable.first_floor_first_building,
+        R.drawable.second_floor_first_building,
+        R.drawable.third_floor_first_building
     ),
-    SECOND(R.drawable.first_floor_second_building, R.drawable.second_floor_second_building),
+    SECOND(
+        R.drawable.first_floor_second_building,
+        R.drawable.second_floor_second_building
+    ),
     THIRD(
         R.drawable.first_floor_third_building,
         R.drawable.second_floor_third_building,
