@@ -13,4 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="splashTheme" parent="Theme.RanepaMap">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        
+    </style>
 </resources>
