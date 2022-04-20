@@ -5,34 +5,38 @@ import androidx.lifecycle.ViewModel
 import com.sogya.projects.instruments.Constants
 import com.sogya.projects.instruments.myCallBack
 import com.sogya.projects.models.Building
+import com.sogya.projects.models.InMemoryBuildingsRepository
 
 class MapVM : ViewModel() {
     var floorResourceLiveData: MutableLiveData<Int> = MutableLiveData()
     var floorNumberLiveData: MutableLiveData<Int> = MutableLiveData()
+    var buildingTitleLiveData: MutableLiveData<String> = MutableLiveData()
     private var floorCounter = Constants.MINIMAL_FLOOR_NUMBER
+    private lateinit var selectedBuilding: Building
+    var buildingId: Int? = null
 
 
-    fun goDown(selectedBuilding: Building, myCallBack: myCallBack<Boolean>) {
+    fun goDown(myCallBack: myCallBack<Boolean>) {
         if (floorCounter > Constants.MINIMAL_FLOOR_NUMBER) {
             floorCounter--
         } else {
             myCallBack.data(true)
         }
         floorNumberLiveData.postValue(floorCounter)
-        setResource(selectedBuilding)
+        setResource()
     }
 
-    fun goUp(selectedBuilding: Building, myCallBack: myCallBack<Boolean>) {
+    fun goUp(myCallBack: myCallBack<Boolean>) {
         if (floorCounter < selectedBuilding.floorNumber) {
             floorCounter++
         } else {
             myCallBack.data(true)
         }
         floorNumberLiveData.postValue(floorCounter)
-        setResource(selectedBuilding)
+        setResource()
     }
 
-    private fun setResource(selectedBuilding: Building) {
+    private fun setResource() {
         var floorResource = Constants.DEFAULT_RESORCE_FOR_MAP_FRAGMENT
         when (floorCounter) {
             1 -> floorResource = selectedBuilding.buildingsFloorsEnums.firstFloorResource
@@ -45,9 +49,12 @@ class MapVM : ViewModel() {
         floorResourceLiveData.postValue(floorResource)
     }
 
-    fun setDefault(selectedBuilding: Building) {
+    fun setDefault() {
+        selectedBuilding =
+            InMemoryBuildingsRepository.getInstance().getById(buildingId)
         floorResourceLiveData.postValue(selectedBuilding.buildingsFloorsEnums.firstFloorResource)
         floorNumberLiveData.postValue(Constants.MINIMAL_FLOOR_NUMBER)
+        buildingTitleLiveData.postValue(selectedBuilding.label)
 
     }
 }
