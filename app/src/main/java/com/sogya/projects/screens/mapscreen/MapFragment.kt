@@ -12,12 +12,11 @@ import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentMapBinding
 import com.sogya.projects.instruments.OnDataPass
 import com.sogya.projects.instruments.myCallBack
-import com.sogya.projects.models.Building
 
 class MapFragment : Fragment(R.layout.fragment_map) {
     private lateinit var binding: FragmentMapBinding
     private lateinit var mOnDataPass: OnDataPass
-    private lateinit var selectedBuilding: Building
+
     private lateinit var vm: MapVM
 
     override fun onCreateView(
@@ -31,12 +30,15 @@ class MapFragment : Fragment(R.layout.fragment_map) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        selectedBuilding = arguments?.getSerializable("building") as Building
-        mOnDataPass.onDataPass(selectedBuilding.label)
         vm = ViewModelProvider(this).get(MapVM::class.java)
+        vm.buildingId = arguments?.getInt("buildingId")
+        vm.setDefault()
+        vm.buildingTitleLiveData.observe(viewLifecycleOwner) {
+            mOnDataPass.onDataPass(it)
+        }
 
         binding.buttonDown.setOnClickListener {
-            vm.goDown(selectedBuilding,
+            vm.goDown(
                 object : myCallBack<Boolean> {
                     override fun data(t: Boolean) {
                         Toast.makeText(
@@ -48,7 +50,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
                 })
         }
         binding.buttonUp.setOnClickListener {
-            vm.goUp(selectedBuilding,
+            vm.goUp(
                 object : myCallBack<Boolean> {
                     override fun data(t: Boolean) {
                         Toast.makeText(
@@ -67,15 +69,8 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        vm.setDefault(selectedBuilding)
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mOnDataPass = context as OnDataPass
     }
-
-
 }
