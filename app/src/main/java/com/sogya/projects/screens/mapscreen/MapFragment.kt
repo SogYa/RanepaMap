@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -65,6 +66,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
             binding.textViewFloorNumber.text = it.toString()
         }
         vm.floorResourceLiveData.observe(viewLifecycleOwner) {
+            binding.loadingLayout.visibility = GONE
             binding.photoView.setImageResource(it)
         }
     }
