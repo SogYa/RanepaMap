@@ -5,10 +5,11 @@ import java.io.Serializable
 
 
 data class Building(
+    val buildingId: Int,
     val resourceId: Int,
     val label: String,
     val floorNumber: Int,
     val buildingsFloorsEnums: BuildingsFloorsEnums
 
 
-) : Serializable
+)
