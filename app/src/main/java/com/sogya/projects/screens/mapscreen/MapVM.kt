@@ -37,7 +37,7 @@ class MapVM : ViewModel() {
     }
 
     private fun setResource() {
-        var floorResource = Constants.DEFAULT_RESORCE_FOR_MAP_FRAGMENT
+        var floorResource = Constants.DEFAULT_RESOuRCE_FOR_MAP_FRAGMENT
         when (floorCounter) {
             1 -> floorResource = selectedBuilding.buildingsFloorsEnums.firstFloorResource
             2 -> floorResource = selectedBuilding.buildingsFloorsEnums.secondFloorResource
