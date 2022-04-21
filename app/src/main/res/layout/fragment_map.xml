@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/als_hauss_regular"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/switch_button_color"
             android:textSize="20sp"
             android:textStyle="bold" />
 
