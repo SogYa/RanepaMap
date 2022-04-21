@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_gray"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +24,7 @@
             android:layout_margin="10dp"
             android:fontFamily="@font/als_hauss_regular"
             android:gravity="center_vertical"
-            android:textColor="@color/ranepa_red"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,17 +35,16 @@
             tools:layout_conversion_absoluteHeight="27dp"
             tools:layout_conversion_absoluteWidth="366dp" />
 
-        <Button
+        <ImageView
             android:id="@+id/button_change_theme"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="#00FFFFFF"
+            android:foreground="@drawable/ic_baseline_wb_sunny_24"
+            android:foregroundGravity="center"
+            android:foregroundTint="@color/white"
             android:gravity="center_vertical"
-            app:icon="@drawable/ic_baseline_bedtime_24"
-            app:iconPadding="0dp"
-            app:iconSize="25dp"
-            app:iconTint="@color/ranepa_red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -52,7 +52,9 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck"
             tools:layout_conversion_absoluteHeight="35dp"
-            tools:layout_conversion_absoluteWidth="35dp" />
+            tools:layout_conversion_absoluteWidth="35dp"
+            android:contentDescription="@string/activity_main_night_button" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.fragment.app.FragmentContainerView
