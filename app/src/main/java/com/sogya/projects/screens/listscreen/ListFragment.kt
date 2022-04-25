@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -40,6 +41,7 @@ class ListFragment : Fragment(R.layout.fragment_list), ListAdapter.OnBuildingCli
 
         vm.buildingListLiveData.observe(viewLifecycleOwner) {
             adapter.updateBuildingList(it)
+            binding.loadingLayout.visibility = GONE
         }
 
         mOnDataPass.onDataPass(getString(R.string.main_title))
