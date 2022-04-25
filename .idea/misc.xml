@@ -7,12 +7,15 @@
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/drawable/bottom_border.xml" value="0.1" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/drawable/splash_screen.xml" value="0.1025" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/font/inherit.xml" value="0.1037037037037037" />
-        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout-night/activity_main.xml" value="0.8333333333333334" />
-        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/activity_main.xml" value="0.11363636363636363" />
+        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout-night/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout-night/activity_start.xml" value="0.32382246376811596" />
+        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/activity_main.xml" value="0.7333333333333334" />
+        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/activity_start.xml" value="0.5" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/building_item.xml" value="0.2462686567164179" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/buildng_item.xml" value="0.5" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/fragment_list.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/fragment_map.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/fragment_map.xml" value="0.24574961360123648" />
+        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/loading_layout.xml" value="0.16296296296296298" />
       </map>
     </option>
   </component>
