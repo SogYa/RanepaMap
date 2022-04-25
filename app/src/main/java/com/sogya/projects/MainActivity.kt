@@ -1,6 +1,9 @@
 package com.sogya.projects
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -35,12 +38,28 @@ class MainActivity : AppCompatActivity(), OnDataPass {
 
         setupNavigation()
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.listFragment -> {
+                    binding.buttonGoBack.visibility = GONE
+                    binding.buttonChangeTheme.visibility = VISIBLE
+                }
+                R.id.mapFragment -> {
+                    binding.buttonChangeTheme.visibility = GONE
+                    binding.buttonGoBack.visibility = VISIBLE
+                }
+            }
+        }
+        binding.buttonGoBack.setOnClickListener {
+            onBackPressed()
+        }
+
         binding.buttonChangeTheme.setOnClickListener {
             vm.setTheme(object : myCallBack<Boolean> {
                 override fun data(t: Boolean) {
+                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                     finish()
-                    startActivity(intent)
-                    overridePendingTransition(0, 0)
+                    overridePendingTransition(0,0)
                 }
             })
         }
@@ -50,6 +69,7 @@ class MainActivity : AppCompatActivity(), OnDataPass {
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
+
     }
 
     override fun onDataPass(data: String) {
