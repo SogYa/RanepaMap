@@ -1,4 +1,6 @@
-package com.sogya.projects.models
+package com.sogya.projects.domain
+
+import com.sogya.projects.models.Building
 
 interface BuildingsRepository {
 

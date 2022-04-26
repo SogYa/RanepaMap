@@ -1,4 +1,4 @@
-package com.sogya.projects.screens.mapscreen
+package com.sogya.projects.presentation.screens.mapscreen
 
 import android.content.Context
 import android.os.Bundle

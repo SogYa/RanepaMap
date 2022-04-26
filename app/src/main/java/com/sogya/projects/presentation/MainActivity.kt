@@ -1,4 +1,4 @@
-package com.sogya.projects
+package com.sogya.projects.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.sogya.projects.R
 import com.sogya.projects.app.App
 import com.sogya.projects.databinding.ActivityMainBinding
 import com.sogya.projects.instruments.OnDataPass

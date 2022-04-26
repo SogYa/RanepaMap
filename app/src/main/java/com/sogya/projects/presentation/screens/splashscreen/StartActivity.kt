@@ -1,4 +1,4 @@
-package com.sogya.projects.screens.splashscreen
+package com.sogya.projects.presentation.screens.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.sogya.projects.MainActivity
+import com.sogya.projects.presentation.MainActivity
 import com.sogya.projects.R
 import com.sogya.projects.app.App
 import kotlinx.coroutines.DelicateCoroutinesApi
