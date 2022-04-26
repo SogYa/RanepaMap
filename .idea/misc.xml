@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/drawable/border_for_image_view.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/drawable/bottom_border.xml" value="0.1" />
+        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/drawable/ic_left_arrow.xml" value="0.1" />
+        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/drawable/ic_right_arrow.xml" value="0.1025" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/drawable/splash_screen.xml" value="0.1025" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/font/inherit.xml" value="0.1037037037037037" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout-night/activity_main.xml" value="0.5" />
@@ -14,7 +16,7 @@
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/building_item.xml" value="0.2462686567164179" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/buildng_item.xml" value="0.5" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/fragment_list.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/fragment_map.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/fragment_map.xml" value="0.5426621160409556" />
         <entry key="..\:/Users/ghost/AndroidStudioProjects/RanepaMap/app/src/main/res/layout/loading_layout.xml" value="0.16296296296296298" />
       </map>
     </option>
