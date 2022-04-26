@@ -1,17 +1,20 @@
-package com.sogya.projects.screens.mapscreen
+package com.sogya.projects.presentation.screens.mapscreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sogya.projects.instruments.Constants
 import com.sogya.projects.instruments.myCallBack
 import com.sogya.projects.models.Building
-import com.sogya.projects.models.InMemoryBuildingsRepository
+import com.sogya.projects.data.BuildingsRepositoryImpl
+import com.sogya.projects.domain.GetBuildingItemUseCase
 
 class MapVM : ViewModel() {
     var floorResourceLiveData: MutableLiveData<Int> = MutableLiveData()
     var floorNumberLiveData: MutableLiveData<Int> = MutableLiveData()
     var buildingTitleLiveData: MutableLiveData<String> = MutableLiveData()
     private var floorCounter = Constants.MINIMAL_FLOOR_NUMBER
+    private val repository = BuildingsRepositoryImpl
+    private val getBuildingItemUseCase = GetBuildingItemUseCase(repository.getInstance())
     private lateinit var selectedBuilding: Building
     var buildingId: Int? = null
 
@@ -37,7 +40,7 @@ class MapVM : ViewModel() {
     }
 
     private fun setResource() {
-        var floorResource = Constants.DEFAULT_RESOuRCE_FOR_MAP_FRAGMENT
+        var floorResource = Constants.DEFAULT_RESOURCE_FOR_MAP_FRAGMENT
         when (floorCounter) {
             1 -> floorResource = selectedBuilding.buildingsFloorsEnums.firstFloorResource
             2 -> floorResource = selectedBuilding.buildingsFloorsEnums.secondFloorResource
@@ -51,7 +54,7 @@ class MapVM : ViewModel() {
 
     fun setDefault() {
         selectedBuilding =
-            InMemoryBuildingsRepository.getInstance().getById(buildingId)
+            getBuildingItemUseCase.getBuilding(buildingId)
         floorResourceLiveData.postValue(selectedBuilding.buildingsFloorsEnums.firstFloorResource)
         floorNumberLiveData.postValue(Constants.MINIMAL_FLOOR_NUMBER)
         buildingTitleLiveData.postValue(selectedBuilding.label)
