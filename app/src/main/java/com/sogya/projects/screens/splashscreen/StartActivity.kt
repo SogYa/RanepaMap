@@ -2,15 +2,14 @@ package com.sogya.projects.screens.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.sogya.projects.MainActivity
 import com.sogya.projects.R
 import com.sogya.projects.app.App
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @DelicateCoroutinesApi
 class StartActivity : AppCompatActivity() {
@@ -23,8 +22,11 @@ class StartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
 
-        GlobalScope.launch {
-            delay(1000)
+        startMainScreen()
+    }
+
+    private fun startMainScreen() {
+        Handler(Looper.getMainLooper()).postDelayed({
             startActivity(
                 Intent(
                     baseContext,
@@ -32,7 +34,7 @@ class StartActivity : AppCompatActivity() {
                 ).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             )
             finish()
-            overridePendingTransition(0,0)
-        }
+            overridePendingTransition(0, 0)
+        }, 1000)
     }
 }
