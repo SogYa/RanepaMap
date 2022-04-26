@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sogya.projects.R
-import com.sogya.projects.models.Building
+import com.sogya.projects.domain.models.Building
 
 class ListAdapter(
     private val onBuildingClickListener: OnBuildingClickListener

@@ -1,4 +1,4 @@
-package com.sogya.projects.models;
+package com.sogya.projects.domain.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,7 +1,6 @@
-package com.sogya.projects.models
+package com.sogya.projects.domain.models
 
 import com.sogya.projects.instruments.BuildingsFloorsEnums
-import java.io.Serializable
 
 
 data class Building(

@@ -1,6 +1,6 @@
 package com.sogya.projects.domain
 
-import com.sogya.projects.models.Building
+import com.sogya.projects.domain.models.Building
 
 class GetBuildingItemUseCase(private val buildingsRepository: BuildingsRepository) {
     fun getBuilding(id: Int?): Building {

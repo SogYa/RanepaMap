@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sogya.projects.instruments.Constants
 import com.sogya.projects.instruments.myCallBack
-import com.sogya.projects.models.Building
+import com.sogya.projects.domain.models.Building
 import com.sogya.projects.data.BuildingsRepositoryImpl
 import com.sogya.projects.domain.GetBuildingItemUseCase
 

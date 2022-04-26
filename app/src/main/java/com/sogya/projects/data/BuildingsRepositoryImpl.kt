@@ -3,7 +3,7 @@ package com.sogya.projects.data
 import com.sogya.projects.R
 import com.sogya.projects.domain.BuildingsRepository
 import com.sogya.projects.instruments.BuildingsFloorsEnums
-import com.sogya.projects.models.Building
+import com.sogya.projects.domain.models.Building
 
 class BuildingsRepositoryImpl : BuildingsRepository {
 

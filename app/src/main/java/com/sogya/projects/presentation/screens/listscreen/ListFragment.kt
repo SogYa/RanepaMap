@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentListBinding
 import com.sogya.projects.instruments.OnDataPass
-import com.sogya.projects.models.Building
+import com.sogya.projects.domain.models.Building
 
 class ListFragment : Fragment(R.layout.fragment_list), ListAdapter.OnBuildingClickListener {
     private lateinit var binding: FragmentListBinding

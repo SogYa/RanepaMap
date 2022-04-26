@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.sogya.projects.app.App
 import com.sogya.projects.instruments.Constants
 import com.sogya.projects.instruments.myCallBack
-import com.sogya.projects.models.SPControl
+import com.sogya.projects.domain.models.SPControl
 
 class MainVM : ViewModel() {
 

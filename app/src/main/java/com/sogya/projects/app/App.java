@@ -6,7 +6,7 @@ import android.content.Context;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.sogya.projects.instruments.Constants;
-import com.sogya.projects.models.SPControl;
+import com.sogya.projects.domain.models.SPControl;
 
 public class App extends Application {
 
