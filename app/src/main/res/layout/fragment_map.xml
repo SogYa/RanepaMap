@@ -31,13 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#00FFFFFF"
-            android:foreground="@drawable/ic_baseline_keyboard_arrow_left_24"
+            android:foreground="@drawable/ic_left_arrow"
             android:foregroundGravity="center"
             android:foregroundTint="@color/ranepa_red"
-            app:icon="@drawable/ic_baseline_keyboard_arrow_left_24"
-            app:iconGravity="start"
-            app:iconSize="50dp"
-            app:iconTint="@color/ranepa_red"
             app:rippleColor="#00FFFFFF" />
 
         <TextView
@@ -58,13 +54,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#00FFFFFF"
-            android:foreground="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:foreground="@drawable/ic_right_arrow"
             android:foregroundGravity="center"
             android:foregroundTint="@color/ranepa_red"
-            app:icon="@drawable/ic_baseline_keyboard_arrow_right_24"
-            app:iconGravity="end"
-            app:iconSize="50dp"
-            app:iconTint="@color/ranepa_red"
             app:rippleColor="#00FFFFFF" />
     </LinearLayout>
 
