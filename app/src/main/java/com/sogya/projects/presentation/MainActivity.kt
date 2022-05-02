@@ -23,15 +23,17 @@ class MainActivity : AppCompatActivity(), OnDataPass {
     private lateinit var navController: NavController
     private lateinit var topBarTittle: TextView
     private lateinit var vm: MainVM
-    private lateinit var binding: ActivityMainBinding
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
+        //Попробовать проверку биндинга на нулл для рекрейта активити
         if (App.getInstance().isNightModeEnabled) {
             AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
         } else {
             AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
         }
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         vm = ViewModelProvider(this).get(MainVM::class.java)
@@ -60,7 +62,7 @@ class MainActivity : AppCompatActivity(), OnDataPass {
                 override fun data(t: Boolean) {
                     startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                     finish()
-                    overridePendingTransition(0,0)
+                    overridePendingTransition(0, 0)
                 }
             })
         }

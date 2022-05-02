@@ -15,7 +15,8 @@ import com.sogya.projects.instruments.OnDataPass
 import com.sogya.projects.instruments.myCallBack
 
 class MapFragment : Fragment(R.layout.fragment_map) {
-    private lateinit var binding: FragmentMapBinding
+    private var _binding: FragmentMapBinding? = null
+    private val binding get() = _binding!!
     private lateinit var mOnDataPass: OnDataPass
 
     private lateinit var vm: MapVM
@@ -25,7 +26,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMapBinding.inflate(inflater, container, false)
+        _binding = FragmentMapBinding.inflate(inflater, container, false)
         return binding.root
     }
 

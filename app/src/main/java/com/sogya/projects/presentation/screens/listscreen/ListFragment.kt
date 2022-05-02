@@ -17,7 +17,8 @@ import com.sogya.projects.instruments.OnDataPass
 import com.sogya.projects.domain.models.Building
 
 class ListFragment : Fragment(R.layout.fragment_list), ListAdapter.OnBuildingClickListener {
-    private lateinit var binding: FragmentListBinding
+    private var _binding: FragmentListBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter: ListAdapter
     private lateinit var mOnDataPass: OnDataPass
 
@@ -26,7 +27,7 @@ class ListFragment : Fragment(R.layout.fragment_list), ListAdapter.OnBuildingCli
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentListBinding.inflate(inflater, container, false)
+        _binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
