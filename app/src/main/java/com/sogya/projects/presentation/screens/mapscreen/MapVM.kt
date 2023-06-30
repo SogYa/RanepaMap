@@ -3,10 +3,8 @@ package com.sogya.projects.presentation.screens.mapscreen
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sogya.projects.instruments.Constants
-import com.sogya.projects.instruments.myCallBack
-import com.sogya.projects.domain.models.Building
-import com.sogya.projects.data.BuildingsRepositoryImpl
-import com.sogya.projects.domain.GetBuildingItemUseCase
+import ru.sogya.projects.domain.models.Building
+import ru.sogya.projects.data.repositories.BuildingsRepositoryImpl
 
 class MapVM : ViewModel() {
     var floorResourceLiveData: MutableLiveData<Int> = MutableLiveData()
@@ -14,8 +12,9 @@ class MapVM : ViewModel() {
     var buildingTitleLiveData: MutableLiveData<String> = MutableLiveData()
     private var floorCounter = Constants.MINIMAL_FLOOR_NUMBER
     private val repository = BuildingsRepositoryImpl
-    private val getBuildingItemUseCase = GetBuildingItemUseCase(repository.getInstance())
-    private lateinit var selectedBuilding: Building
+    private val getBuildingItemUseCase =
+        ru.sogya.projects.domain.usecase.GetBuildingItemUseCase(repository.getInstance())
+    private lateinit var selectedBuilding: ru.sogya.projects.domain.models.Building
     var buildingId: Int? = null
 
 

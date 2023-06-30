@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentMapBinding
-import com.sogya.projects.instruments.OnDataPass
-import com.sogya.projects.instruments.myCallBack
 
 class MapFragment : Fragment(R.layout.fragment_map) {
     private var _binding: FragmentMapBinding? = null

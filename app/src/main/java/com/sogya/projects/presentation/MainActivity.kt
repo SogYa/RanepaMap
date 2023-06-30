@@ -15,8 +15,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.sogya.projects.R
 import com.sogya.projects.app.App
 import com.sogya.projects.databinding.ActivityMainBinding
-import com.sogya.projects.instruments.OnDataPass
-import com.sogya.projects.instruments.myCallBack
 
 class MainActivity : AppCompatActivity(), OnDataPass {
     private lateinit var navHostFragment: NavHostFragment
@@ -85,5 +83,4 @@ class MainActivity : AppCompatActivity(), OnDataPass {
             supportFragmentManager.popBackStack()
         }
     }
-
 }

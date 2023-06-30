@@ -1,13 +1,10 @@
 package com.sogya.projects.app;
 
 import android.app.Application;
-import android.content.Context;
 
-import androidx.appcompat.app.AppCompatDelegate;
+import dagger.hilt.android.HiltAndroidApp;
 
-import com.sogya.projects.instruments.Constants;
-import com.sogya.projects.domain.models.SPControl;
-
+@HiltAndroidApp
 public class App extends Application {
 
     private boolean isNightModeEnabled = false;
@@ -15,7 +12,6 @@ public class App extends Application {
     private static App app;
 
     public static App getInstance() {
-
         if (app == null) {
             app = new App();
         }
@@ -27,13 +23,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
-        this.isNightModeEnabled = SPControl.getInstance().getBoolPrefs(Constants.NIGHT_MODE);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode());
-
-    }
-
-    public static Context getAppContext() {
-        return app.getApplicationContext();
     }
 
 
@@ -43,6 +32,5 @@ public class App extends Application {
 
     public void setIsNightModeEnabled(boolean isNightModeEnabled) {
         this.isNightModeEnabled = isNightModeEnabled;
-        SPControl.getInstance().updatePrefs(Constants.NIGHT_MODE, isNightModeEnabled);
     }
 }

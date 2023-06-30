@@ -7,14 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sogya.projects.R
-import com.sogya.projects.domain.models.Building
+import ru.sogya.projects.domain.models.Building
 
 class ListAdapter(
     private val onBuildingClickListener: OnBuildingClickListener
 ) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
-    private var buildings = ArrayList<Building>()
+    private var buildings = ArrayList<ru.sogya.projects.domain.models.Building>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
@@ -24,12 +24,12 @@ class ListAdapter(
     }
 
     interface OnBuildingClickListener {
-        fun onClick(building: Building)
+        fun onClick(building: ru.sogya.projects.domain.models.Building)
     }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val building: Building = buildings[position]
+        val building: ru.sogya.projects.domain.models.Building = buildings[position]
         holder.labelTextView.text = building.label
         holder.imageViewBuilding.setImageResource(building.resourceId)
         holder.itemView.setOnClickListener {
@@ -47,7 +47,7 @@ class ListAdapter(
 
     }
 
-    fun updateBuildingList(buildingArrayList: ArrayList<Building>) {
+    fun updateBuildingList(buildingArrayList: ArrayList<ru.sogya.projects.domain.models.Building>) {
         this.buildings.clear()
         notifyItemChanged(1)
         this.buildings.addAll(buildingArrayList)

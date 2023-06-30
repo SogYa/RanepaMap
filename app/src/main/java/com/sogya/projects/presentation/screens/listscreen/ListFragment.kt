@@ -13,8 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentListBinding
-import com.sogya.projects.instruments.OnDataPass
-import com.sogya.projects.domain.models.Building
+import ru.sogya.projects.domain.models.Building
 
 class ListFragment : Fragment(R.layout.fragment_list), ListAdapter.OnBuildingClickListener {
     private var _binding: FragmentListBinding? = null
@@ -53,7 +52,7 @@ class ListFragment : Fragment(R.layout.fragment_list), ListAdapter.OnBuildingCli
         mOnDataPass = context as OnDataPass
     }
 
-    override fun onClick(building: Building) {
+    override fun onClick(building: ru.sogya.projects.domain.models.Building) {
         findNavController().navigate(
             R.id.action_listFragment_to_mapFragment,
             bundleOf("buildingId" to building.buildingId)
