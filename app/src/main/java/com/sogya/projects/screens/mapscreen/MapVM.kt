@@ -1,4 +1,4 @@
-package com.sogya.projects.presentation.screens.mapscreen
+package com.sogya.projects.screens.mapscreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

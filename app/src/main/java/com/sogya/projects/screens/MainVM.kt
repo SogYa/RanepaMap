@@ -1,4 +1,4 @@
-package com.sogya.projects.presentation
+package com.sogya.projects.screens
 
 import androidx.lifecycle.ViewModel
 

@@ -1,4 +1,4 @@
-package com.sogya.projects.presentation
+package com.sogya.projects.screens
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,14 +6,10 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.sogya.projects.R
-import com.sogya.projects.app.App
 import com.sogya.projects.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

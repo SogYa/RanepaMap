@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RanepaMap">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".screens.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">

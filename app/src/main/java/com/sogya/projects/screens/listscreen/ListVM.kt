@@ -1,4 +1,4 @@
-package com.sogya.projects.presentation.screens.listscreen
+package com.sogya.projects.screens.listscreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

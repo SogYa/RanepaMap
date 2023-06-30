@@ -1,4 +1,4 @@
-package com.sogya.projects.presentation.screens.listscreen
+package com.sogya.projects.screens.listscreen
 
 import android.view.LayoutInflater
 import android.view.View
