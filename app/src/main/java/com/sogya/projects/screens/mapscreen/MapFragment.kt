@@ -15,7 +15,6 @@ import com.sogya.projects.databinding.FragmentMapBinding
 class MapFragment : Fragment(R.layout.fragment_map) {
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
-    private lateinit var mOnDataPass: OnDataPass
 
     private lateinit var vm: MapVM
 
@@ -70,8 +69,8 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mOnDataPass = context as OnDataPass
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
