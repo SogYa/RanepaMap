@@ -1,17 +1,25 @@
 package com.sogya.projects.screens.listscreen
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.sogya.projects.data.repositories.BuildingsRepositoryImpl
-import ru.sogya.projects.domain.models.Building
+import com.sogya.projects.mappers.BuildingListMapper
+import com.sogya.projects.models.BuildingPresentation
+import dagger.hilt.android.lifecycle.HiltViewModel
+import ru.sogya.projects.domain.usecase.GetBuildingsListUseCase
+import javax.inject.Inject
 
-class ListVM : ViewModel() {
-    var buildingListLiveData: MutableLiveData<ArrayList<ru.sogya.projects.domain.models.Building>> = MutableLiveData()
-    private val repository = BuildingsRepositoryImpl
-    private val getBuildingsListUseCase =
-        ru.sogya.projects.domain.usecase.GetBuildingsListUseCase(repository.getInstance())
+@HiltViewModel
+class ListVM @Inject constructor(
+    getBuildingsListUseCase: GetBuildingsListUseCase
+) : ViewModel() {
+    private val buildingListLiveData = MutableLiveData<List<BuildingPresentation>>()
+
 
     init {
-        buildingListLiveData.postValue(getBuildingsListUseCase.getBuildingsList())
+        val buildingsDomainList = getBuildingsListUseCase()
+        buildingListLiveData.value = BuildingListMapper(buildingsDomainList).map()
     }
+
+    fun getBuildingLiveData(): LiveData<List<BuildingPresentation>> = buildingListLiveData
 }

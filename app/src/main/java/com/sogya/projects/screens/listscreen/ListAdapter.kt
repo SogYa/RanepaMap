@@ -1,20 +1,25 @@
 package com.sogya.projects.screens.listscreen
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.sogya.projects.R
-import ru.sogya.projects.domain.models.Building
+import com.sogya.projects.models.BuildingPresentation
 
 class ListAdapter(
-    private val onBuildingClickListener: OnBuildingClickListener
-) :
-    RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+    private val context: Context
+) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+    interface OnClickListener {
+        operator fun invoke(building: BuildingPresentation)
+    }
 
-    private var buildings = ArrayList<ru.sogya.projects.domain.models.Building>()
+    private var onClickListener: OnClickListener? = null
+    private var buildings = ArrayList<BuildingPresentation>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
@@ -23,17 +28,16 @@ class ListAdapter(
         return ViewHolder(view)
     }
 
-    interface OnBuildingClickListener {
-        fun onClick(building: ru.sogya.projects.domain.models.Building)
-    }
-
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val building: ru.sogya.projects.domain.models.Building = buildings[position]
+        val building: BuildingPresentation = buildings[position]
         holder.labelTextView.text = building.label
-        holder.imageViewBuilding.setImageResource(building.resourceId)
+        Glide.with(context)
+            .load(building.imageUri)
+            .centerCrop()
+            .placeholder(R.drawable.ranepa_logo)
+            .into(holder.imageViewBuilding)
         holder.itemView.setOnClickListener {
-            onBuildingClickListener.onClick(building)
+            onClickListener?.invoke(building)
         }
     }
 
@@ -47,11 +51,14 @@ class ListAdapter(
 
     }
 
-    fun updateBuildingList(buildingArrayList: ArrayList<ru.sogya.projects.domain.models.Building>) {
+    fun updateBuildingList(buildingArrayList: List<BuildingPresentation>) {
         this.buildings.clear()
         notifyItemChanged(1)
         this.buildings.addAll(buildingArrayList)
         notifyItemRangeChanged(0, buildings.size)
     }
 
+    fun setOnClickListener(onClickListener: OnClickListener) {
+        this.onClickListener = onClickListener
+    }
 }
