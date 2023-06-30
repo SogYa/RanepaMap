@@ -26,12 +26,8 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme()
         //Попробовать проверку биндинга на нулл для рекрейта активити
-        if (App.getInstance().isNightModeEnabled) {
-            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
-        }
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
