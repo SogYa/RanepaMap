@@ -15,8 +15,10 @@ import androidx.navigation.fragment.NavHostFragment
 import com.sogya.projects.R
 import com.sogya.projects.app.App
 import com.sogya.projects.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity(), OnDataPass {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
     private lateinit var topBarTittle: TextView
