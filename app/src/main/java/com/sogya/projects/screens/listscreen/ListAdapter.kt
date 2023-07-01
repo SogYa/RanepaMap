@@ -14,11 +14,6 @@ import com.sogya.projects.models.BuildingPresentation
 class ListAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
-    interface OnClickListener {
-        operator fun invoke(building: BuildingPresentation)
-    }
-
-    private var onClickListener: OnClickListener? = null
     private var buildings = ArrayList<BuildingPresentation>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,7 +32,7 @@ class ListAdapter(
             .placeholder(R.drawable.ranepa_logo)
             .into(holder.imageViewBuilding)
         holder.itemView.setOnClickListener {
-            onClickListener?.invoke(building)
+            onItemClick?.invoke(building.buildingId)
         }
     }
 
@@ -58,7 +53,5 @@ class ListAdapter(
         notifyItemRangeChanged(0, buildings.size)
     }
 
-    fun setOnClickListener(onClickListener: OnClickListener) {
-        this.onClickListener = onClickListener
-    }
+    var onItemClick: ((buildingId: Int) -> Unit)? = null
 }
