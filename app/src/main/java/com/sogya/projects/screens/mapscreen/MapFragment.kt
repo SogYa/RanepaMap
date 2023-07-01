@@ -1,6 +1,6 @@
 package com.sogya.projects.screens.mapscreen
 
-import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +8,24 @@ import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
+import com.sogya.projects.Constants
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentMapBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MapFragment : Fragment(R.layout.fragment_map) {
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var vm: MapVM
+    private val vm: MapVM by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,43 +38,50 @@ class MapFragment : Fragment(R.layout.fragment_map) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm = ViewModelProvider(this).get(MapVM::class.java)
-        vm.buildingId = arguments?.getInt("buildingId")
-        vm.setDefault()
-        vm.buildingTitleLiveData.observe(viewLifecycleOwner) {
-            mOnDataPass.onDataPass(it)
+        val buildingId = arguments?.getInt("buildingId")
+        if (buildingId != null) {
+            vm.getBuilding(buildingId)
         }
 
         binding.buttonDown.setOnClickListener {
-            vm.goDown(
-                object : myCallBack<Boolean> {
-                    override fun data(t: Boolean) {
-                        Toast.makeText(
-                            context,
-                            getString(R.string.toast_floor_down_attention),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                })
+            vm.setFloor(Constants.FLOOR_DOWN)
         }
         binding.buttonUp.setOnClickListener {
-            vm.goUp(
-                object : myCallBack<Boolean> {
-                    override fun data(t: Boolean) {
-                        Toast.makeText(
-                            context,
-                            getString(R.string.toast_floor_up_attention),
-                            Toast.LENGTH_SHORT
-                        ).show()
+            vm.setFloor(Constants.FLOOR_UP)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        vm.getFloorLiveData().observe(viewLifecycleOwner) {
+            Glide.with(requireContext()).load(it.imageUri)
+                .placeholder(R.drawable.ranepa_logo)
+                .error(R.drawable.ranepa_logo)
+                .addListener(object : RequestListener<Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
+                        return true
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        binding.loadingLayout.visibility = GONE
+                        return true
                     }
                 })
-        }
-        vm.floorNumberLiveData.observe(viewLifecycleOwner) {
-            binding.textViewFloorNumber.text = it.toString()
-        }
-        vm.floorResourceLiveData.observe(viewLifecycleOwner) {
-            binding.loadingLayout.visibility = GONE
-            binding.photoView.setImageResource(it)
+                .into(binding.photoView)
+            binding.textViewFloorNumber.text = it.floorNumber.toString()
         }
     }
 
