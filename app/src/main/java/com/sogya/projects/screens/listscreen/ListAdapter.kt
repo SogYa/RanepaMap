@@ -15,6 +15,10 @@ class ListAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     private var buildings = ArrayList<BuildingPresentation>()
+    private var onClickListener: OnClickListener? = null
+    interface OnClickListener {
+        fun pnClick(building: BuildingPresentation)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
@@ -32,7 +36,7 @@ class ListAdapter(
             .placeholder(R.drawable.ranepa_logo)
             .into(holder.imageViewBuilding)
         holder.itemView.setOnClickListener {
-            onItemClick?.invoke(building.buildingId)
+            onClickListener?.pnClick(building)
         }
     }
 
@@ -53,5 +57,7 @@ class ListAdapter(
         notifyItemRangeChanged(0, buildings.size)
     }
 
-    var onItemClick: ((buildingId: Int) -> Unit)? = null
+    fun setOnClickListener(onClickListener: OnClickListener) {
+        this.onClickListener = onClickListener
+    }
 }
