@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.listFragment -> {
-                    binding.topAppBar?.navigationIcon?.setVisible(true, false)
+                    binding.topAppBar?.navigationIcon?.setVisible(false, false)
                 }
 
                 R.id.mapFragment -> {
-                    binding.topAppBar?.navigationIcon?.setVisible(false, false)
+                    binding.topAppBar?.navigationIcon?.setVisible(true, false)
                 }
             }
         }
