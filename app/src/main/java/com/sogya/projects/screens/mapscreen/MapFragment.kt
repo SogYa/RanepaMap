@@ -2,6 +2,7 @@ package com.sogya.projects.screens.mapscreen
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -12,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
@@ -54,9 +56,13 @@ class MapFragment : Fragment(R.layout.fragment_map) {
     override fun onStart() {
         super.onStart()
         vm.getFloorLiveData().observe(viewLifecycleOwner) {
+            Log.d("Uri", it.imageUri)
             Glide.with(requireContext()).load(it.imageUri)
                 .placeholder(R.drawable.ranepa_logo)
                 .error(R.drawable.ranepa_logo)
+                .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+                .encodeFormat(SvgEncoder())
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .addListener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
                         e: GlideException?,
@@ -64,6 +70,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
                         target: Target<Drawable>?,
                         isFirstResource: Boolean
                     ): Boolean {
+                        Log.d("Error", e.toString())
                         Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show()
                         findNavController().popBackStack()
                         return true
@@ -77,7 +84,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
                         isFirstResource: Boolean
                     ): Boolean {
                         binding.loadingLayout.visibility = GONE
-                        return true
+                        return false
                     }
                 })
                 .into(binding.photoView)

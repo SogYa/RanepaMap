@@ -3,10 +3,13 @@ package com.sogya.projects.screens.mapscreen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.sogya.projects.Constants
+import com.sogya.projects.mappers.BuildngItemMapper
 import com.sogya.projects.models.BuildingPresentation
 import com.sogya.projects.models.FloorPresentation
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import ru.sogya.projects.domain.usecase.GetBuildingItemUseCase
 import javax.inject.Inject
 
@@ -34,9 +37,13 @@ class MapVM @Inject constructor(
     }
 
     fun getBuilding(buildingId: Int) {
-        selectedBuilding =
-            getBuildingItemUseCase(buildingId) as BuildingPresentation
-        floorsNum = selectedBuilding.floorsList.size
+        viewModelScope.launch {
+            val buildingDomain = getBuildingItemUseCase(buildingId)
+            selectedBuilding =
+                BuildngItemMapper(buildingDomain).map()
+            floorsNum = selectedBuilding.floorsList.size
+            floorLiveData.value = selectedBuilding.floorsList[floorCounter]
+        }
     }
 
     fun getFloorLiveData(): LiveData<FloorPresentation> = floorLiveData
