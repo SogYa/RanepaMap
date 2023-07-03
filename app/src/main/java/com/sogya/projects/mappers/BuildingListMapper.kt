@@ -5,10 +5,11 @@ import ru.sogya.projects.domain.models.BuildingDomain
 
 class BuildingListMapper(private val domainList: List<BuildingDomain>) {
 
-    fun map(): List<BuildingPresentation>{
+    fun map(): List<BuildingPresentation> {
         val presentationList = arrayListOf<BuildingPresentation>()
         for (building in domainList) {
-            presentationList.add(building as BuildingPresentation)
+            val buildingPresentation = BuildngItemMapper(building).map()
+            presentationList.add(buildingPresentation)
         }
         return presentationList
     }
