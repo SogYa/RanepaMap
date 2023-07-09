@@ -1,23 +1,20 @@
 package com.sogya.projects.screens.listscreen
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.sogya.projects.R
 import com.sogya.projects.models.BuildingPresentation
 
-class ListAdapter(
-    private val context: Context
-) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     private var buildings = ArrayList<BuildingPresentation>()
     private var onClickListener: OnClickListener? = null
+
     interface OnClickListener {
-        fun pnClick(building: BuildingPresentation)
+        fun onClick(buildingId: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,13 +27,9 @@ class ListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val building: BuildingPresentation = buildings[position]
         holder.labelTextView.text = building.label
-        Glide.with(context)
-            .load(building.imageUri)
-            .centerCrop()
-            .placeholder(R.drawable.ranepa_logo)
-            .into(holder.imageViewBuilding)
+        holder.imageViewBuilding.setImageResource(building.imageId)
         holder.itemView.setOnClickListener {
-            onClickListener?.pnClick(building)
+            onClickListener?.onClick(building.buildingId)
         }
     }
 
