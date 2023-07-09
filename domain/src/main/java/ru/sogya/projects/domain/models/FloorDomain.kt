@@ -1,6 +1,6 @@
 package ru.sogya.projects.domain.models
 
 interface FloorDomain {
-    val imageUri:String
+    val imageId:Int
     val floorNumber:Int
 }
