@@ -1,22 +1,11 @@
 package com.sogya.projects.screens.mapscreen
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.sogya.projects.Constants
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentMapBinding
@@ -56,39 +45,9 @@ class MapFragment : Fragment(R.layout.fragment_map) {
     override fun onStart() {
         super.onStart()
         vm.getFloorLiveData().observe(viewLifecycleOwner) {
-            Log.d("Uri", it.imageUri)
-            Glide.with(requireContext()).load(it.imageUri)
-                .placeholder(R.drawable.ranepa_logo)
-                .error(R.drawable.ranepa_logo)
-                .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-                .encodeFormat(SvgEncoder())
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                .addListener(object : RequestListener<Drawable> {
-                    override fun onLoadFailed(
-                        e: GlideException?,
-                        model: Any?,
-                        target: Target<Drawable>?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        Log.d("Error", e.toString())
-                        Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
-                        return true
-                    }
-
-                    override fun onResourceReady(
-                        resource: Drawable?,
-                        model: Any?,
-                        target: Target<Drawable>?,
-                        dataSource: DataSource?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        binding.loadingLayout.visibility = GONE
-                        return false
-                    }
-                })
-                .into(binding.photoView)
+            it.drawableId?.let { it1 -> binding.photoView.setImageResource(it1) }
             binding.textViewFloorNumber.text = it.floorNumber.toString()
+            binding.loadingLayout.visibility = View.GONE
         }
     }
 
