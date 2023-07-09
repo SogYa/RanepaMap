@@ -9,7 +9,8 @@ class FloorListMapper(private val floorList: List<FloorDomain>) {
         for (floor in floorList) {
             val floorPresentation =
                 FloorPresentation(
-                    floor.imageUri,
+                    floor.imageId,
+                    drawableId = null,
                     floor.floorNumber
                 )
             presentationList.add(floorPresentation)
