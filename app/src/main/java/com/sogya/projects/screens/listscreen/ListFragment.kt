@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentListBinding
-import com.sogya.projects.models.BuildingPresentation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,12 +34,12 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = GridLayoutManager(requireContext(), 2)
         binding.buildingsRecyclerView.layoutManager = layoutManager
-        adapter = ListAdapter(requireContext())
+        adapter = ListAdapter()
         adapter.setOnClickListener(object : ListAdapter.OnClickListener {
-            override fun pnClick(building: BuildingPresentation) {
+            override fun onClick(buildingId: Int) {
                 findNavController().navigate(
                     R.id.action_listFragment_to_mapFragment,
-                    bundleOf("buildingId" to building.buildingId)
+                    bundleOf("buildingId" to buildingId)
                 )
             }
         })
