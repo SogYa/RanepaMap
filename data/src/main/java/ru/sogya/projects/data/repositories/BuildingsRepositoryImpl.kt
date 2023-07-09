@@ -6,87 +6,120 @@ import ru.sogya.projects.domain.models.BuildingDomain
 import ru.sogya.projects.domain.repository.BuildingsRepository
 
 class BuildingsRepositoryImpl : BuildingsRepository {
+    companion object {
+        private const val FIRST_BUILDING_ID = 0
+        private const val SECOND_BUILDING_ID = 1
+        private const val THIRD_BUILDING_ID = 2
+        private const val FIVE_BUILDING_ID = 3
+        private const val SIX_BUILDING_ID = 4
+
+        private const val FIRST_FLOUR_FIRST_BUILDING = 0
+        private const val FIRST_FLOUR_SECOND_BUILDING = 1
+        private const val FIRST_FLOUR_THIRD_BUILDING = 2
+        private const val FIRST_FLOUR_FIVE_BUILDING = 3
+        private const val FIRST_FLOUR_SIX_BUILDING = 4
+        private const val SECOND_FLOUR_FIRST_BUILDING = 5
+        private const val SECOND_FLOUR_SECOND_BUILDING = 6
+        private const val SECOND_FLOUR_THIRD_BUILDING = 7
+        private const val SECOND_FLOUR_FIVE_BUILDING = 8
+        private const val SECOND_FLOUR_SIX_BUILDING = 9
+        private const val THIRD_FLOUR_FIRST_BUILDING = 10
+        private const val THIRD_FLOUR_THIRD_BUILDING = 11
+        private const val THIRD_FLOUR_FIVE_BUILDING = 12
+        private const val THIRD_FLOUR_SIX_BUILDING = 13
+        private const val FOUR_FLOUR_FIRST_BUILDING = 14
+        private const val FOUR_FLOUR_THIRD_BUILDING = 15
+        private const val FOUR_FLOUR_FIVE_BUILDING = 16
+        private const val FIVE_FLOUR_FIVE_BUILDING = 17
+        private const val SIX_FLOUR_FIVE_BUILDING = 18
+    }
+
     private val buildingsList = listOf(
         BuildingData(
-            1,
-            "https://www.ranepa.ru/images/newMedia/about/korpusa/11-1.jpg",
+            FIRST_BUILDING_ID,
             "Первый корпус",
             listOf(
                 FloorData(
-                    imageUri = "https://www.ranepa.ru/images/newMedia/about/korpusa/Korpus1-1.jpg",
+                    imageId = FIRST_FLOUR_FIRST_BUILDING,
                     floorNumber = 1
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/newMedia/about/korpusa/Korpus1-2.jpg",
+                    imageId = SECOND_FLOUR_FIRST_BUILDING,
                     floorNumber = 2
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/newMedia/about/korpusa/Korpus1-3.jpg",
+                    imageId = THIRD_FLOUR_FIRST_BUILDING,
                     floorNumber = 3
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/newMedia/about/korpusa/Korpus1-a.jpg",
+                    imageId = FOUR_FLOUR_FIRST_BUILDING,
                     floorNumber = 4
                 )
             ),
         ), BuildingData(
-            2,
-            "https://www.ranepa.ru/images/newMedia/about/korpus2new.jpg",
+            SECOND_BUILDING_ID,
             "Второй корпус",
             listOf(
                 FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/korpus2-1.jpg",
+                    imageId = FIRST_FLOUR_SECOND_BUILDING,
                     floorNumber = 1
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/korpus2-2.jpg",
+                    imageId = SECOND_FLOUR_SECOND_BUILDING,
                     floorNumber = 1
-                ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/korpus2-3.jpg",
-                    floorNumber = 2
-                ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/korpus2-4new.jpg",
-                    floorNumber = 2
                 )
             )
         ), BuildingData(
-            3,
-            "https://www.ranepa.ru/images/newMedia/about/korpusa/33-1.jpg",
+            THIRD_BUILDING_ID,
             "Третий корпус",
             listOf(
                 FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/3korpus1etazh.jpg",
+                    imageId = FIRST_FLOUR_THIRD_BUILDING,
                     floorNumber = 1
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/3-KORPUS-2020-2-.svg",
+                    imageId = SECOND_FLOUR_THIRD_BUILDING,
                     floorNumber = 2
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/3korpus3etazh.jpg",
+                    imageId = THIRD_FLOUR_THIRD_BUILDING,
                     floorNumber = 3
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/3korpus4etazh.jpg",
+                    imageId = FOUR_FLOUR_THIRD_BUILDING,
                     floorNumber = 4
                 )
             )
         ), BuildingData(
-            4,
-            "https://www.ranepa.ru/images/newMedia/about/korpusa/55-1.jpg",
+            FIVE_BUILDING_ID,
             "Пятый корпус",
             listOf(
                 FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/5-korpus_1.jpg",
+                    imageId = FIRST_FLOUR_FIVE_BUILDING,
                     floorNumber = 1
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/5-korpus_2.jpg",
+                    imageId = SECOND_FLOUR_FIVE_BUILDING,
                     floorNumber = 2
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/5-korpus_3.jpg",
+                    imageId = THIRD_FLOUR_FIVE_BUILDING,
                     floorNumber = 3
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/5-korpus_4.jpg",
+                    imageId = FOUR_FLOUR_FIVE_BUILDING,
                     floorNumber = 4
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/5-korpus_5.jpg",
+                    imageId = FIVE_FLOUR_FIVE_BUILDING,
                     floorNumber = 5
                 ), FloorData(
-                    imageUri = "https://www.ranepa.ru/images/about_academy/korpusa/5-korpus_6.jpg",
+                    imageId = SIX_FLOUR_FIVE_BUILDING,
                     floorNumber = 6
+                )
+            )
+        ), BuildingData(
+            SIX_BUILDING_ID,
+            "Шестой корпус",
+            listOf(
+                FloorData(
+                    imageId = FIRST_FLOUR_SIX_BUILDING,
+                    floorNumber = 1
+                ), FloorData(
+                    imageId = SECOND_FLOUR_SIX_BUILDING,
+                    floorNumber = 2
+                ), FloorData(
+                    imageId = THIRD_FLOUR_SIX_BUILDING,
+                    floorNumber = 3
                 )
             )
         )
