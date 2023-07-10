@@ -7,10 +7,12 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.sogya.projects.screens.listscreen.ListFragment"
-        android:label="ListFragment" >
+        android:label="ListFragment">
         <action
             android:id="@+id/action_listFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
+            app:destination="@id/mapFragment"
+            app:enterAnim="@anim/fade_in"
+            app:popEnterAnim="@anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
