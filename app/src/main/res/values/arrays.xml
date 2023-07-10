@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="floors">
+        <item>@drawable/first_floor_first_building</item>
+        <item>@drawable/first_floor_second_building</item>
+        <item>@drawable/first_floor_third_building</item>
+        <item>@drawable/first_floor_five_building</item>
+        <item>@drawable/first_floor_six_building</item>
+        <item>@drawable/second_floor_first_building</item>
+        <item>@drawable/second_floor_second_building</item>
+        <item>@drawable/second_floor_third_building</item>
+        <item>@drawable/second_floor_five_building</item>
+        <item>@drawable/second_floor_six_building</item>
+        <item>@drawable/third_floor_first_building</item>
+        <item>@drawable/third_floor_third_building</item>
+        <item>@drawable/third_floor_five_building</item>
+        <item>@drawable/third_floor_six_building</item>
+        <item>@drawable/four_floor_first_building</item>
+        <item>@drawable/four_floor_third_building</item>
+        <item>@drawable/four_floor_five_building</item>
+        <item>@drawable/five_floor_five_building</item>
+        <item>@drawable/six_floor_five_building</item>
+    </array>
+    <array name="buildings">
+        <item>@drawable/building1</item>
+        <item>@drawable/building2</item>
+        <item>@drawable/building3</item>
+        <item>@drawable/building5</item>
+        <item>@drawable/building6</item>
+    </array>
+</resources>

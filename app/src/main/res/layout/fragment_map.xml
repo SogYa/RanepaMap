@@ -4,6 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBarMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ranepa_gray"
+            android:elevation="0dp"
+            app:layout_scrollEffect="compress"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+
+            app:title=""
+            app:titleTextAppearance="@style/ToolBarTextStyle"
+            app:titleTextColor="@color/black" />
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/photo_view"
         android:layout_width="0dp"
@@ -12,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -25,64 +50,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85">
 
-        <Button
+        <ImageButton
             android:id="@+id/buttonDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#00FFFFFF"
-            android:foreground="@drawable/ic_left_arrow"
-            android:foregroundGravity="center"
-            android:foregroundTint="@color/ranepa_red"
+            android:src="@drawable/keyboard_double_arrow_left_48dp"
+            android:background="@color/transparent"
+            app:tint="@color/ranepa_red"
             app:rippleColor="#00FFFFFF" />
 
         <TextView
             android:id="@+id/textViewFloorNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:fontFamily="@font/als_hauss_regular"
             android:textAlignment="center"
             android:textColor="@color/switch_button_color"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
-        <Button
+        <ImageButton
             android:id="@+id/buttonUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#00FFFFFF"
-            android:foreground="@drawable/ic_right_arrow"
-            android:foregroundGravity="center"
-            android:foregroundTint="@color/ranepa_red"
+            android:src="@drawable/keyboard_double_arrow_right_48dp"
+            android:background="@color/transparent"
+            app:tint="@color/ranepa_red"
             app:rippleColor="#00FFFFFF" />
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/loadingLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone">
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:indeterminateTint="@color/ranepa_red"
-            android:progressTintMode="screen"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
