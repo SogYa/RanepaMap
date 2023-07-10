@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentListBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +33,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val layoutManager = GridLayoutManager(requireContext(), 2)
+        val layoutManager = LinearLayoutManager(requireContext())
         binding.buildingsRecyclerView.layoutManager = layoutManager
         adapter = ListAdapter()
         adapter.setOnClickListener(object : ListAdapter.OnClickListener {
