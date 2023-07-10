@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ToolBarTextStyle">
+        <item name="android:fontFamily">@font/als_hauss_medium</item>
+        <item name="android:textSize">27sp</item>
+    </style>
+</resources>

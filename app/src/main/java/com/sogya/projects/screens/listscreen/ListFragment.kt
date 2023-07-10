@@ -3,13 +3,11 @@ package com.sogya.projects.screens.listscreen
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentListBinding
@@ -51,7 +49,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         super.onStart()
         vm.getBuildingLiveData().observe(viewLifecycleOwner) {
             adapter.updateBuildingList(it)
-            binding.loadingLayout.visibility = GONE
         }
     }
 
