@@ -15,4 +15,11 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/ranepa_gray</item>
     </style>
+
+    <style name="Theme.SplashScreen" parent="Theme.RanepaMap">
+        <item name="android:windowBackground">
+            @drawable/splash_screen
+        </item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+    </style>
 </resources>
