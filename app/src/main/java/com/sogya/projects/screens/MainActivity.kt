@@ -1,14 +1,11 @@
 package com.sogya.projects.screens
 
 import android.os.Bundle
-import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.sogya.projects.R
 import com.sogya.projects.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,14 +22,15 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupNavigation()
+        binding.topAppBar.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.listFragment -> {
-                    binding.topAppBar?.navigationIcon?.setVisible(false, false)
+                    binding.topAppBar.setNavigationIcon(R.drawable.ranepa_logo_24dp)
                 }
 
                 R.id.mapFragment -> {
-                    binding.topAppBar?.navigationIcon?.setVisible(true, false)
+                    binding.topAppBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
                 }
             }
         }
