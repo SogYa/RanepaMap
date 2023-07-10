@@ -20,6 +20,7 @@ class MapVM @Inject constructor(
     private val getBuildingItemUseCase: GetBuildingItemUseCase
 ) : ViewModel() {
     private val floorLiveData = MutableLiveData<FloorPresentation>()
+    private var toolBarTitleLiveData = MutableLiveData<String>()
     private lateinit var selectedBuilding: BuildingPresentation
     private lateinit var floorPresentation: FloorPresentation
     private var floorCounter: Int = 0
@@ -52,6 +53,7 @@ class MapVM @Inject constructor(
             floorNumber = selectedBuilding.floorsList.size - 1
             floorPresentation = selectedBuilding.floorsList[floorCounter]
             setFloor(null)
+            toolBarTitleLiveData.postValue(selectedBuilding.label)
         }
     }
 
@@ -65,4 +67,5 @@ class MapVM @Inject constructor(
     }
 
     fun getFloorLiveData(): LiveData<FloorPresentation> = floorLiveData
+    fun getToolbarTitleLiveData(): LiveData<String> = toolBarTitleLiveData
 }

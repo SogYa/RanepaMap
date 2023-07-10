@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sogya.projects.Constants
 import com.sogya.projects.R
 import com.sogya.projects.databinding.FragmentMapBinding
@@ -33,7 +34,9 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         if (buildingId != null) {
             vm.getBuilding(buildingId)
         }
-
+        binding.toolBarMap.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
         binding.buttonDown.setOnClickListener {
             vm.setFloor(Constants.FLOOR_DOWN)
         }
@@ -47,7 +50,9 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         vm.getFloorLiveData().observe(viewLifecycleOwner) {
             it.drawableId?.let { it1 -> binding.photoView.setImageResource(it1) }
             binding.textViewFloorNumber.text = it.floorNumber.toString()
-            binding.loadingLayout.visibility = View.GONE
+        }
+        vm.getToolbarTitleLiveData().observe(viewLifecycleOwner) {
+            binding.toolBarMap.title = it
         }
     }
 
