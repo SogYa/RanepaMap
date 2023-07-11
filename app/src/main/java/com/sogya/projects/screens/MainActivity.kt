@@ -3,7 +3,6 @@ package com.sogya.projects.screens
 import android.os.Build
 import android.os.Bundle
 import android.window.OnBackInvokedDispatcher
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -31,13 +30,6 @@ class MainActivity : AppCompatActivity() {
             ) {
                 backPressed()
             }
-        } else {
-            onBackPressedDispatcher.addCallback(this,
-                object : OnBackPressedCallback(true) {
-                    override fun handleOnBackPressed() {
-                        backPressed()
-                    }
-                })
         }
     }
 
