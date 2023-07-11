@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ranepa Maps</string>
+    <string name="app_name">Путеводитель РАНХиГС</string>
     <string name="list_item_image_description">Фото корпуса</string>
     <string name="start_screen_ranepa_logo">Логотип РАНХиГС</string>
 </resources>
