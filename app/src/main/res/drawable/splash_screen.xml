@@ -2,6 +2,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/design_default_color_on_primary" />
     <item
+        android:width="200dp"
+        android:height="100dp"
         android:drawable="@drawable/logo_base_ranhigs"
         android:gravity="center">
     </item>
